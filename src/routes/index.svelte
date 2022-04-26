@@ -1,14 +1,19 @@
-<div class="h-screen grid justify-center items-center bg-rose-200">
+<script>
+  import Header from './Header.svelte';
+  import GearPiece from './GearPiece.svelte';
+</script>
 
-  <div class="bg-gray-50 rounded-full px-12 py-4 text-center shadow-md">
-    <h1 class="text-3xl font-bold">Svelte + TailwindCSS</h1>
-    <h2>just another template | <a href="https://github.com/joseph-bravo/svelte-tailwind">github</a></h2>
+<main class="bg-pink-50 h-screen">
+
+  <Header />
+
+  <div class="grid grid-flow-col justify-center gap-4 py-8">
+    <GearPiece />
+    <GearPiece />
+    <GearPiece />
+    <GearPiece />
+    <GearPiece />
   </div>
 
-</div>
 
-<style>
-  a {
-    @apply text-red-900 hover:brightness-125;
-  }
-</style>
+</main>
