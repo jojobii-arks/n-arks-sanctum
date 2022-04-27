@@ -30,7 +30,7 @@
 </script>
 
 <li><!-- Augment Header -->
-  <div on:click={toggleDisplay} class="bg-cyan-900 flex justify-between items-center gap-4">
+  <div on:click={toggleDisplay} class="bg-cyan-900 hover:bg-cyan-600 hover:cursor-pointer select-none flex justify-between items-center gap-4">
     <h3>{augment.name}</h3>
     <h3>+{augment.battlePower}</h3>
 

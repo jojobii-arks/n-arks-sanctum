@@ -8,6 +8,11 @@
 			this.type = type;
 			this.name = name;
 			this.augments = [];
+			if (type === 'unit') {
+				this.icon = './src/assets/icons/unit.svg';
+			} else {
+				this.icon = './src/assets/icons/weapon.svg';
+			}
 		}
 	}
 

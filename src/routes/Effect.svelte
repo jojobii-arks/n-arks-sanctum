@@ -25,7 +25,7 @@
 
 </script>
 
-<li class="bg-indigo-900 flex justify-between items-center"><!-- Effect -->
+<li class="bg-indigo-900 flex justify-between items-center select-none"><!-- Effect -->
 	<img src={icon} alt="">
 	<h4>{renderedNumber(effectValue)}</h4>
 </li>
