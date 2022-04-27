@@ -14,9 +14,18 @@
 		}
 	};
 
+	function renderedNumber(num) {
+		let percentSign = '';
+		if (num < 1) {
+			num *= 100;
+			percentSign = '%';
+		}
+		return sign(num) + num + percentSign;
+	}
+
 </script>
 
 <li class="bg-indigo-900 flex justify-between items-center"><!-- Effect -->
-				<img src={icon} alt="">
-				<h4>{sign(effectValue)}{effectValue}</h4>
-			</li>
+	<img src={icon} alt="">
+	<h4>{renderedNumber(effectValue)}</h4>
+</li>
