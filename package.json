@@ -29,6 +29,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"lodash": "^4.17.21",
 		"xmlhttprequest": "^1.8.0"
 	}
 }

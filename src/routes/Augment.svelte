@@ -10,6 +10,10 @@
     open = !open;
   }
 
+	import { augments } from '../data/data';
+	let example = $augments.getById(2);
+	console.log($augments)
+
 </script>
 
 <li><!-- Augment Header -->
@@ -23,7 +27,7 @@
     <RightChevron />
     {/if}
   </div>
-  {#if open}s
+  {#if open}
 		<ul><!-- Effects -->
 			<Effect />
 		</ul>

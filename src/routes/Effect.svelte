@@ -1,5 +1,6 @@
 <script>
-	import icon from '../assets/icons-effect/damage-resist.svg';
+	import icon from '../assets/icons-effect/resist-dmg.svg';
+
 	let value = 1;
 	function valueSign() {
 		if (value > 0) {
