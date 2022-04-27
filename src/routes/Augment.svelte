@@ -1,8 +1,10 @@
 <script>
+  import Effect from './Effect.svelte';
+
   import RightChevron from './icons/RightChevron.svelte';
   import DownChevron from './icons/DownChevron.svelte';
 
-  let open = false;
+  let open = true;
 
   function toggleDisplay() {
     open = !open;
@@ -10,7 +12,7 @@
 
 </script>
 
-<li>
+<li><!-- Augment Header -->
   <div on:click={toggleDisplay} class="bg-cyan-900 flex justify-between items-center gap-4">
     <h3>Augment Name</h3>
     <h3>+BP</h3>
@@ -20,6 +22,10 @@
     {:else}
     <RightChevron />
     {/if}
-
   </div>
+  {#if open}s
+		<ul><!-- Effects -->
+			<Effect />
+		</ul>
+  {/if}
 </li>
