@@ -4,10 +4,14 @@
   import RightChevron from './icons/RightChevron.svelte';
   import DownChevron from './icons/DownChevron.svelte';
 
-  let open = true;
+	let hidden = 'hidden';
 
   function toggleDisplay() {
-    open = !open;
+    if (hidden === 'hidden') {
+			hidden = ''
+		} else {
+			hidden = 'hidden'
+		}
   }
 
 	import { augments } from '../data/data';
@@ -22,8 +26,6 @@
 			value: effects[fx]
 		});
 	}
-	console.log(renderEffects);
-
 
 </script>
 
@@ -32,17 +34,15 @@
     <h3>{augment.name}</h3>
     <h3>+{augment.battlePower}</h3>
 
-    {#if open}
-    <DownChevron />
-    {:else}
+    {#if hidden}
     <RightChevron />
+    {:else}
+    <DownChevron />
     {/if}
   </div>
-  {#if open}
-		<ul><!-- Effects -->
-			{#each renderEffects as stat}
-			<Effect effectName={stat.name} effectValue={stat.value}/>
-			{/each}
-		</ul>
-  {/if}
+	<ul class="{hidden}"><!-- Effects -->
+		{#each renderEffects as stat}
+		<Effect effectName={stat.name} effectValue={stat.value}/>
+		{/each}
+	</ul>
 </li>
