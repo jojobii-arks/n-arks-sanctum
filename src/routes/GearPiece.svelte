@@ -1,5 +1,9 @@
 <script>
-  import Augment from './Augment.svelte'
+  import Augment from './Augment.svelte';
+	import { augments } from '../data/data';
+
+	export let gear = null;
+
 </script>
 
 <div class="grid-flow-row text-white">
@@ -8,6 +12,8 @@
     <h2 class="text-xl">Weapon</h2>
   </div>
   <div class="grid-flow-row">
-    <Augment />
+		{#each gear.augments as augment}
+    <Augment augment={augment} />
+		{/each}
   </div>
 </div>

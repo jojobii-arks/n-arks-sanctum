@@ -11,12 +11,14 @@
   }
 
 	import { augments } from '../data/data';
-	let example = $augments.getById(1);
-	let effects = example.effects;
+
+	export let augment = null;
+
+	let effects = augment.effects;
 	let renderEffects = [];
 	for (let fx in effects) {
 		renderEffects.push({
-			stat: fx,
+			name: fx,
 			value: effects[fx]
 		});
 	}
@@ -27,8 +29,8 @@
 
 <li><!-- Augment Header -->
   <div on:click={toggleDisplay} class="bg-cyan-900 flex justify-between items-center gap-4">
-    <h3>Augment Name</h3>
-    <h3>+BP</h3>
+    <h3>{augment.name}</h3>
+    <h3>+{augment.battlePower}</h3>
 
     {#if open}
     <DownChevron />
@@ -39,9 +41,8 @@
   {#if open}
 		<ul><!-- Effects -->
 			{#each renderEffects as stat}
-				<p>{stat.value}</p>
+			<Effect effectName={stat.name} effectValue={stat.value}/>
 			{/each}
-			<Effect />
 		</ul>
   {/if}
 </li>

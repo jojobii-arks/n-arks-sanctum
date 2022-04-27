@@ -30,7 +30,7 @@ rawData.forEach( element => {
 const out = {
 	data: outArray,
 	getById: id => out.data.find(ele => ele.id === id),
-	getEffectIconPath: augObj => '../assets/icons-effect/' + _.kebabCase(augObj)
+	getEffectIconPath: augObj => './src/assets/icons-effect/' + _.kebabCase(augObj) + '.svg'
 };
 
 export const augments = readable(out);
