@@ -11,8 +11,17 @@
   }
 
 	import { augments } from '../data/data';
-	let example = $augments.getById(2);
-	console.log($augments)
+	let example = $augments.getById(1);
+	let effects = example.effects;
+	let renderEffects = [];
+	for (let fx in effects) {
+		renderEffects.push({
+			stat: fx,
+			value: effects[fx]
+		});
+	}
+	console.log(renderEffects);
+
 
 </script>
 
@@ -29,6 +38,9 @@
   </div>
   {#if open}
 		<ul><!-- Effects -->
+			{#each renderEffects as stat}
+				<p>{stat.value}</p>
+			{/each}
 			<Effect />
 		</ul>
   {/if}

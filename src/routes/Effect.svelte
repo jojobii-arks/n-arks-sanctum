@@ -1,7 +1,7 @@
 <script>
-	import icon from '../assets/icons-effect/resist-dmg.svg';
+	export let icon = '';
 
-	let value = 1;
+	export let value = 1;
 	function valueSign() {
 		if (value > 0) {
 			return '+';

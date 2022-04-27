@@ -9,8 +9,5 @@
   </div>
   <div class="grid-flow-row">
     <Augment />
-    <Augment />
-    <Augment />
-    <Augment />
   </div>
 </div>
