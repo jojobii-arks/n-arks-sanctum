@@ -1,41 +1,39 @@
 <script>
   import Header from './Header.svelte';
   import GearPiece from './GearPiece.svelte';
-	import { augments } from '../data/data'
+	import Augment from './Augment.svelte';
+	import { augments } from '../data/data';
+	import { writable } from 'svelte/store';
+	import { gear } from './UserData'
 
-	class GearHandler {
-		constructor(type, name) {
-			this.type = type;
-			this.name = name;
-			this.augments = [];
-			if (type === 'unit') {
-				this.icon = './src/assets/icons/unit.svg';
-			} else {
-				this.icon = './src/assets/icons/weapon.svg';
-			}
-		}
-	}
+	console.log(gear);
 
-	let userGear = [
-		new GearHandler('unit', 'Unit Name')
-	]
+	// $gear.set({...$gear, name: 'epic'});
 
-	userGear[0].augments.push($augments.getById(19))
-	userGear[0].augments.push($augments.getById(57))
-	userGear[0].augments.push($augments.getById(98))
-	userGear[0].augments.push($augments.getById(163))
+	// console.log($gear);
 
 </script>
+
+<!-- <p>{$gear.name}</p> -->
 
 <main class="bg-pink-50 min-h-screen h-full">
 
   <Header />
 
   <div class="grid grid-flow-row sm:grid-flow-col justify-center gap-4 py-8 px-4">
-		{#each userGear as piece}
-    <GearPiece gear={piece} />
-		{/each}
+    <!-- <GearPiece gear={$gear} /> -->
   </div>
 
+	<div class="grid grid-flow-row justify-center">
+		<div>
+			<h2>All Augments</h2>
+		</div>
+		<div class="grid grid-flow-row gap-3 w-64">
+			{#each $augments.data.slice(0, 20) as augment}
+				<Augment {augment} hidden={true} />
+				<button>Add</button>
+			{/each}
+		</div>
+	</div>
 
 </main>

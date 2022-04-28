@@ -3,15 +3,12 @@
 
   import RightChevron from './icons/RightChevron.svelte';
   import DownChevron from './icons/DownChevron.svelte';
+	import UpChevron from './icons/UpChevron.svelte';
 
-	let hidden = 'hidden';
+	export let hidden = true;
 
   function toggleDisplay() {
-    if (hidden === 'hidden') {
-			hidden = ''
-		} else {
-			hidden = 'hidden'
-		}
+		hidden = !hidden
   }
 
 	import { augments } from '../data/data';
@@ -19,7 +16,7 @@
 	export let augment = null;
 
 	let effects = augment.effects;
-	let renderEffects = [];
+	const renderEffects = [];
 	for (let fx in effects) {
 		renderEffects.push({
 			name: fx,
@@ -29,20 +26,28 @@
 
 </script>
 
-<li><!-- Augment Header -->
-  <div on:click={toggleDisplay} class="bg-cyan-900 hover:bg-cyan-600 hover:cursor-pointer select-none flex justify-between items-center gap-4">
+<div on:click={toggleDisplay} class="hover:cursor-pointer hover:brightness-105 text-white max-w-xs h-fit">
+  <div class="bg-cyan-900 select-none flex justify-between items-center px-2">
     <h3>{augment.name}</h3>
-    <h3>+{augment.battlePower}</h3>
+    <h3>
+			{#if augment.battlePower}
+			+{augment.battlePower}<sub>BP</sub>
+			{/if}
+		</h3>
+		<!--
 
-    {#if hidden}
-    <RightChevron />
-    {:else}
-    <DownChevron />
-    {/if}
-  </div>
-	<ul class="{hidden}"><!-- Effects -->
+		 -->
+  </div><!-- Augment Header -->
+	<ul class:hidden class="" ><!-- Effects -->
 		{#each renderEffects as stat}
-		<Effect effectName={stat.name} effectValue={stat.value}/>
+			<Effect {...stat}/>
 		{/each}
 	</ul>
-</li>
+	<div class="bg-cyan-900 hover:cursor-pointer flex justify-center items-center h-4">
+    {#if hidden}
+    <DownChevron />
+    {:else}
+    <UpChevron />
+    {/if}
+	</div>
+</div>

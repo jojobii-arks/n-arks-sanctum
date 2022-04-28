@@ -30,7 +30,17 @@ rawData.forEach( element => {
 const out = {
 	data: outArray,
 	getById: id => out.data.find(ele => ele.id === id),
-	getEffectIconPath: augObj => './src/assets/icons/effect/' + _.kebabCase(augObj) + '.svg'
+	getEffectIconPath: augObj => './src/assets/icons/effect/' + _.kebabCase(augObj) + '.svg',
+	effectValueFormat: function (name, value) {
+		if (name === 'expGrind') {
+			return value;
+		}
+		if (['statHP', 'statPP'].includes(name)) {
+			return (value > 0 ? '+' : '') + value;
+		} else {
+			return (value > 0 ? '+' : '') + value * 1000 / 10 + '%';
+		}
+	}
 };
 
 export const augments = readable(out);

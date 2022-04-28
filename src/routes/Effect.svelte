@@ -1,31 +1,13 @@
 <script>
 	import { augments } from '../data/data'
 
-	export let effectName = null;
-	export let effectValue = null;
-	let icon = $augments.getEffectIconPath(effectName);
-
-	function sign(num) {
-		let signOfNum = Math.sign(num);
-		switch (signOfNum) {
-			case 1: return '+';
-			case 0: return;
-			case -1: return '-' ;
-		}
-	};
-
-	function renderedNumber(num) {
-		let percentSign = '';
-		if (num < 1) {
-			num *= 100;
-			percentSign = '%';
-		}
-		return sign(num) + num + percentSign;
-	}
+	export let name;
+	export let value;
+	let icon = $augments.getEffectIconPath(name);
 
 </script>
 
-<li class="bg-indigo-900 flex justify-between items-center select-none"><!-- Effect -->
-	<img src={icon} alt="">
-	<h4>{renderedNumber(effectValue)}</h4>
+<li class="bg-yellow-800 even:bg-amber-800 flex justify-between items-center select-none px-2 py-0.5"><!-- Effect -->
+	<img src={icon} alt="" class="w-5">
+	<h4>{$augments.effectValueFormat(name, value)}</h4>
 </li>
